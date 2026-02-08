@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   TrendingUp, 
@@ -103,6 +104,7 @@ const aiResponses: Record<string, { content: string; data?: any }> = {
 };
 
 const Index = () => {
+  const navigate = useNavigate();
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
     {
       id: "1",
@@ -183,7 +185,7 @@ const Index = () => {
               Our AI agent analyzes trends, identifies anomalies, and provides actionable recommendations.
             </p>
             <div className="flex gap-3">
-              <Button className="gap-2">
+              <Button className="gap-2" onClick={() => navigate("/chat")}>
                 <Bot className="w-4 h-4" />
                 Start Conversation
               </Button>
